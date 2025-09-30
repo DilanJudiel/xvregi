@@ -1,89 +1,75 @@
-// ====== CONFIG ======
-const TARGET_DATE = new Date('2026-01-24T19:00:00'); // cambia la fecha/hora aquí
-// ====================
+// ================= script.js =================
+// CONFIGURA AQUÍ LA FECHA/HORA DEL EVENTO
+const eventDate = new Date('2025-10-20T19:00:00');
 
-// DOM helpers
-const qs = s => document.querySelector(s);
-const qsa = s => Array.from(document.querySelectorAll(s));
-
-// Mobile nav
-const navToggle = qs('.nav-toggle');
-const navList = qs('.nav-list');
-if(navToggle){
-  navToggle.addEventListener('click', ()=>{
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
-    navList.classList.toggle('show');
-  })
-}
-
-// Smooth anchor scroll
-qsa('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    const href = a.getAttribute('href');
-    if(href.startsWith('#')){
-      const target = document.querySelector(href);
-      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); navList.classList.remove('show'); }
-    }
-  })
-})
-
-// Countdown
+// Cuenta regresiva
 function updateCountdown(){
   const now = new Date();
-  let diff = TARGET_DATE - now;
-  if(diff < 0) diff = 0;
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((diff % (1000*60)) / 1000);
-  qs('#days').textContent = String(days).padStart(2,'0');
-  qs('#hours').textContent = String(hours).padStart(2,'0');
-  qs('#minutes').textContent = String(minutes).padStart(2,'0');
-  qs('#seconds').textContent = String(seconds).padStart(2,'0');
+  const diff = eventDate - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
+  const short = document.getElementById('countdownShort');
+  const fullDateSpan = document.getElementById('eventDateReadable');
+  if(short) short.textContent = diff > 0 ? `Faltan ${days}d ${hrs}h ${mins}m` : 'El evento ya pasó';
+  if(fullDateSpan) fullDateSpan.textContent = eventDate.toLocaleString();
 }
+setInterval(updateCountdown,1000);
 updateCountdown();
-setInterval(updateCountdown, 1000);
 
-// Simple RSVP storage (local)
-const form = qs('#rsvp-form');
-const successModal = qs('#form-success');
-if(form){
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const data = new FormData(form);
-    const record = {};
-    for(const [k,v] of data.entries()) record[k] = v;
-    // read existing
-    const saved = JSON.parse(localStorage.getItem('rsvp_records')||'[]');
-    saved.push({record, date: new Date().toISOString()});
-    localStorage.setItem('rsvp_records', JSON.stringify(saved));
-    // show modal
-    successModal.hidden = false;
-  })
-}
-qs('#close-modal')?.addEventListener('click', ()=>{ qs('#form-success').hidden = true; });
-
-// Lazy load gallery images & lightbox
-function lazyLoad(){
-  qsa('img.lazy').forEach(img=>{
-    const src = img.getAttribute('data-src');
-    if(src){ img.src = src; img.classList.remove('lazy'); img.addEventListener('click', openLightbox); }
-  })
-}
-
-function openLightbox(e){
-  const src = e.currentTarget.src;
+// Lightbox para galería
+function openLightbox(src){
   const overlay = document.createElement('div');
-  overlay.className = 'lightbox';
-  overlay.style.cssText = 'position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,0.85);z-index:60';
-  const img = document.createElement('img');
-  img.src = src; img.style.maxWidth='92%'; img.style.maxHeight='92%'; img.alt = '';
+  overlay.style.position='fixed'; overlay.style.left=0; overlay.style.top=0; overlay.style.right=0; overlay.style.bottom=0;
+  overlay.style.background='rgba(0,0,0,0.85)'; overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center'; overlay.style.zIndex=9999;
+  const img = document.createElement('img'); img.src = src; img.style.maxWidth='90%'; img.style.maxHeight='90%'; img.style.borderRadius='10px';
   overlay.appendChild(img);
-  overlay.addEventListener('click', ()=>overlay.remove());
+  overlay.addEventListener('click', ()=>document.body.removeChild(overlay));
   document.body.appendChild(overlay);
 }
 
-window.addEventListener('load', ()=>{
-  lazyLoad();
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.gallery-item').forEach(img=>{
+    img.addEventListener('click', ()=> openLightbox(img.src));
+  });
+
+  // Formulario RSVP (simulado)
+  const form = document.getElementById('rsvpForm');
+  const msg = document.getElementById('rsvpMsg');
+  if(form){
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const nombre = data.get('nombre');
+      msg.textContent = `Gracias ${nombre}, tu respuesta fue enviada.`;
+      form.reset();
+    });
+  }
 });
+
+// Efecto ZOOM en la imagen del hero al hacer scroll
+(function(){
+  const hero = document.querySelector('.hero');
+  const img = document.querySelector('.hero-img');
+  if(!hero || !img) return;
+  let ticking = false;
+  function onScroll(){
+    const rect = hero.getBoundingClientRect();
+    // progreso entre 0 (inicio) y 1 (cuando se ha movido una altura)
+    const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+    // escala mínima 1, máxima 1.2 -> ajusta el 0.2 para más/menos zoom
+    const scale = 1 + progress * 0.2;
+    img.style.transform = `translate(-50%,-50%) scale(${scale})`;
+  }
+  window.addEventListener('scroll', ()=>{
+    if(!ticking){
+      window.requestAnimationFrame(()=>{ onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+  // inicial
+  onScroll();
+})();
+
+// FIN del script
