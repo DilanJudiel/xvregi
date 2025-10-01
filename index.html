@@ -1,187 +1,184 @@
-<!--
-Proyecto: Replica y rediseño de la página de invitación
-Archivos: index.html, styles.css, script.js
-Carpeta para imágenes: /img/ (ej: img//hero-sofia.jpg, img//corona.png, img/ ...)
-
-INSTRUCCIONES RÁPIDAS:
-- Cambia la fecha del evento en la variable `eventDate` dentro de script.js.
-- Para Google Maps: pega el enlace de "Insertar mapa" (iframe) que genera Google Maps en el placeholder indicado.
-- Reemplaza las imágenes en la carpeta img/ con los nombres indicados.
-
-A continuación están los tres archivos completos y listos para copiar.
--->
-
-<!-- ================= index.html ================= -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Invitación - XV Regina</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <main class="site">
-      <!-- HERO / BANNER con efecto ZOOM al hacer scroll -->
-      <header class="hero" id="inicio">
-        <!-- IMAGEN HERO (colócala en img//hero-sofia.jpg) -->
-        <div class="hero-media">
-          <img src="img/hero-regina.jpg" alt="Sofía" class="hero-img" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Invitación - Regina (XV)</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- ====== HERO / Portada (items 1-2) ====== -->
+    <div class="card hero">
+      <div class="section center">
+        <!-- photo-wrap: Reemplazar 'photo1.jpg' por tu imagen -->
+        <div class="photo-wrap">
+          <img class="main-photo" src="images/photo1.jpg" alt="Regina" />
+          <div class="photo-corners">
+            <!-- Reemplazar las flores por tus archivos: flowers1.png, flowers2.png -->
+            <img class="flower top-left" src="images/flower_tl.png" alt="" />
+            <!-- <img class="flower top-right" src="images/flower_tr.png" alt="" />
+            <img class="flower bottom-left" src="images/flower_bl.png" alt="" /> -->
+            <img class="flower bottom-right" src="images/flower_br.png" alt="" />
+          </div>
         </div>
 
-        <div class="hero-overlay center">
-          <div class="misx">MIS XV</div>
-          <!-- NOMBRE en tipografía cursiva elegante -->
-          <h1 class="name">Regina</h1>
-          <!-- FRASE debajo del nombre -->
-          <p class="lead">
-            Hoy empieza una nueva aventura llena de emociones y sueños.
-          </p>
-          <a class="btn" href="#detalle">Ver detalles</a>
+        <h1 class="main-title">MIS XV</h1>
+        <h2 class="name">Regina</h2>
+        <p class="lead">"Hoy empieza una nueva aventura llena de emociones y sueños"</p>
+      </div>
+    </div>
+
+    <!-- ====== Foto + corona + frase (items 3-4) ====== -->
+    <div class="card section center">
+      <div class="photo-wrap" style="width:280px;height:360px">
+        <img class="main-photo" src="images/photo2.jpg" alt="Regina otra" />
+        <div class="photo-corners">
+            <img class="flower top-left" src="images/flower_tl.png" alt="" />
+            <!-- <img class="flower top-right" src="images/flower_tr.png" alt="" />
+            <img class="flower bottom-left" src="images/flower_bl.png" alt="" /> -->
+            <img class="flower bottom-right" src="images/flower_br.png" alt="" />
         </div>
-      </header>
+      </div>
+      <img class="crown" src="images/CORONA+XV.png" alt="Corona" />
+      <p class="muted">Con la bendición de Dios y el amor de mis padres, me siento feliz de llegar a este momento de mi vida, el día que dejaré atrás mi infancia y comenzaré un nuevo viaje.</p>
+    </div>
 
-      <!-- Frase -->
-      <section id="detalle" class="container card center">
-        <div class="corona-block">
-          <!-- IMAGEN CORONA: img//corona.png -->
-          <img src="img/CORONA+XV.png" alt="Corona" class="corona-img" />
+    <!-- ====== Padres (items 5-6) ====== -->
+    <div class="card section center">
+      <div class="photo-wrap" style="width:260px;height:340px">
+        <img class="main-photo" src="images/photo3.jpg" alt="" />
+        <div class="photo-corners">
+          <img class="flower top-left" src="images/flower_tl.png" alt="" />
         </div>
-        <p class="center small-muted">
-          Con la bendición de Dios y el amor de mis padres, me siento feliz de
-          llegar a este momento de mi vida, el día que dejaré atrás mi infancia
-          y comenzaré un nuevo viaje.
-        </p>
-      </section>
-      <!-- DETALLES -->
-      <section id="detalle" class="container card center">
-        <div class="corona-block">
-          <!-- IMAGEN CORONA: img//corona.png -->
-          <img src="img/CORONA+XV.png" alt="Corona" class="corona-img" />
+      </div>
+      <img class="crown" src="images/CORONA+XV.png" alt="Corona" />
+      <p style="font-family:var(--font-cursive);font-size:20px;margin:6px 0">Mis Padres</p>
+      <p class="muted">Ángel Martínez Paniagua &amp; Mildred Fernández Gómez</p>
+    </div>
+
+    <!-- ====== Padrinos (items 7-8) ====== -->
+    <div class="card section center">
+      <div class="photo-wrap" style="width:260px;height:340px">
+        <img class="main-photo" src="images/photo4.jpg" alt="" />
+        <div class="photo-corners">
+          <img class="flower top-left" src="images/flower_tl.png" alt="" />
         </div>
-        <h2>Mis Padres</h2>
-        <p>
-          <strong>Ángel Martínez Paniagua</strong>
-        </p>
-        <p><strong>Mildred Fernández Gómez</strong></p>
-      </section>
+      </div>
+      <img class="crown" src="images/CORONA+XV.png" alt="Corona" />
+      <p style="font-family:var(--font-cursive);font-size:20px;margin:6px 0">Mis padrinos</p>
+      <p class="muted">Juan Raymundo Quintero &amp; Angela Martínez Paniagua</p>
+    </div>
 
-      <!-- DETALLES -->
-      <section id="detalle" class="container card center">
-        <h2>Detalles del evento</h2>
-        <p>
-          <strong>Fecha:</strong>
-          <span id="eventDateReadable">20 de octubre de 2025</span>
-        </p>
-        <p><strong>Lugar:</strong> Salón de eventos Ejemplo</p>
+    <!-- ====== Calendario y contador (item 10) ====== -->
+    <div class="card section center">
+      <h3 style="font-family:var(--font-cursive);">Fecha del Evento</h3>
+      <div class="calendar" id="calendar"></div>
+      <div class="countdown" id="countdown"></div>
+      <p class="muted">Sábado 24 de enero de 2026</p>
+    </div>
 
-        <div class="corona-block">
-          <!-- IMAGEN CORONA: img//corona.png -->
-          <img src="img/CORONA+XV.png" alt="Corona" class="corona-img" />
+    <!-- ====== Salón y mapa (item 11) ====== -->
+    <div class="card section">
+      <h3 class="center" style="font-family:var(--font-cursive);">Salón</h3>
+      <!-- Reemplazar 'salon.jpg' por la foto del salón -->
+      <img class="map-thumb" src="images/salon.jpg" alt="Salón" />
+      <div class="addr">
+        <img src="images/maps_icon.png" alt="maps" width="36" />
+        <a id="mapsLink" href="#" target="_blank">Avenida Paseo de la Reforma 465, Cuauhtémoc, CDMX</a>
+      </div>
+    </div>
+
+    <!-- ====== Horarios (item 12) ====== -->
+    <div class="card section center">
+      <div class="times">
+        <div><span class="title">Recepción</span><div class="muted">18:00 hrs</div></div>
+        <div><span class="title">Ceremonia de Acción de Gracias</span><div class="muted">17:00 hrs</div></div>
+      </div>
+    </div>
+
+    <!-- ====== Mesa de regalos (item 13) ====== -->
+    <div class="card section center">
+      <p style="font-family:var(--font-cursive);font-size:22px">Mesa de regalos</p>
+      <p class="muted">Agradezco mucho todo su amor y apoyo al iniciar esta nueva etapa en mi vida.</p>
+      <img class="sponsor" src="images/sponsor.png" alt="Patrocinador" />
+    </div>
+
+    <!-- ====== Sobre / Lluvia de sobres (item 15) ====== -->
+    <div class="card section center">
+      <div style="width:160px;margin:0 auto"><img src="images/envelope.png" style="width:100%"/></div>
+      <p style="font-family:var(--font-cursive);font-size:18px;margin:8px 0">Si no tienes tiempo o no sabes qué regalarme...</p>
+      <p style="font-family:var(--font-cursive);font-size:20px">Lluvia de sobres</p>
+      <div style="display:flex;gap:8px;align-items:center;justify-content:center;margin:8px 0">
+        <img src="images/envelope.png" width="34" /> <span>+</span> <img src="images/bill.png" width="34" /> <span>&rarr;</span> <img src="images/baul.png" width="34" /> <span>=</span> <strong>THANK YOU</strong>
+      </div>
+      <p class="muted">La lluvia de sobres, es la tradición de regalar dinero en efectivo a la quinceañera en un sobre el día del evento.</p>
+      <div style="width:120px;margin:10px auto"><img src="images/closet.png" style="width:100%"/></div>
+    </div>
+
+    <!-- ====== Código de vestimenta (item 16) ====== -->
+    <div class="card section center">
+      <p style="font-family:var(--font-cursive);font-size:20px">Código de vestimenta</p>
+      <p class="muted">Etiqueta</p>
+    </div>
+
+    <!-- ====== Reseña del hotel (item 18) ====== -->
+    <div class="card section">
+      <p style="font-family:var(--font-cursive);font-size:20px">Breve reseña del hotel</p>
+      <p class="muted">La Historia del Hotel Marquis Reforma: Un Ícono de la Hospitalidad Mexicana<br/><br/>Ubicado en el corazón del Paseo de la Reforma, Hotel Marquis Reforma abrió sus puertas en 1991, consolidándose como uno de los hoteles más exclusivos y prestigiosos de la Ciudad de México. Como un hotel de lujo 5 estrellas, ha sido reconocido por su excelencia en hospitalidad, su diseño Art Déco y su compromiso con la sustentabilidad.<br/><br/>El Hotel Marquis Reforma es un hotel 100% Mexicano, es un hotel de 5 estrellas y cuenta con la distinción 4 Diamantes otorgada por la AAA (American Automobile Association). Esta certificación reconoce su alto nivel de lujo, comodidad y servicio.</p>
+    </div>
+
+    <!-- ====== Confirmar asistencia (item 19) ====== -->
+    <div class="card section">
+      <p style="font-family:var(--font-cursive);font-size:20px;text-align:center">Confirmar asistencia</p>
+
+      <form class="rsvp" id="rsvpForm">
+        <input type="text" id="nombre" placeholder="Nombre completo *" required />
+        <input type="tel" id="telefono" placeholder="Teléfono *" required />
+        <input type="email" id="email" placeholder="Correo" />
+        <textarea id="mensaje" placeholder="Mensaje de felicitación" rows="3"></textarea>
+        <label>RSVP *</label>
+        <select id="rsvp" required>
+          <option value="">Selecciona...</option>
+          <option value="si">¡Sí asistiré!</option>
+          <option value="no">Lo lamento, no podré asistir</option>
+        </select>
+        <label>*No puedes confirmar más personas de las indicadas en tu pase de entrada</label>
+        <div class="row">
+          <input class="small" type="number" id="acompanantes" min="0" max="5" placeholder="No. personas (0-5)" />
+          <input type="text" id="pase" placeholder="Código de pase (si aplica)" />
         </div>
+        <div style="text-align:center"><button type="submit">Enviar</button></div>
+      </form>
 
-        <div class="center small-muted">
-          Código de vestimenta: <strong>Formal / Gala</strong>
-        </div>
-        <div class="center small-muted">
-          Hashtag del evento: <strong>#ReginaXV2025</strong>
-        </div>
-      </section>
+      <p id="formMsg" style="text-align:center;margin-top:10px;color:var(--azul)"></p>
+    </div>
 
-      <!-- El resto de secciones (itinerario, regalos, galería, mapa, rsvp, etc.) se mantienen como en el lienzo anterior -->
+    <!-- ====== Fotos grid (item 20) ====== -->
+    <div class="card section">
+      <div class="photos-grid">
+        <img src="images/photo5.jpg" alt="" />
+        <img src="images/photo6.jpg" alt="" />
+        <img src="images/photo7.jpg" alt="" />
+        <img src="images/photo8.jpg" alt="" />
+      </div>
+      <p style="text-align:center;margin-top:12px">Te espero con mucho anhelo y emoción....</p>
+      <p style="font-family:var(--font-cursive);font-size:20px;text-align:center">NO FALTES</p>
+    </div>
 
-      <section id="itinerario" class="container card">
-        <h2>Itinerario completo</h2>
-        <ol class="itinerary-list">
-          <li>
-            <strong>17:00</strong> - Ceremonia religiosa (Parroquia Ejemplo)
-          </li>
-          <li><strong>19:00</strong> - Recepción (Salón de eventos Ejemplo)</li>
-          <li><strong>20:30</strong> - Brindis y entrada de la quinceañera</li>
-          <li><strong>21:00</strong> - Baile formal y vals</li>
-          <li><strong>22:00</strong> - Pastel y brindis</li>
-          <li><strong>23:00</strong> - Fiesta / DJ</li>
-        </ol>
-      </section>
+    <footer>
+      <p style="color:var(--azul);font-weight:700">Colores reservados: Azul y Dorado</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
 
-      <section id="regalos" class="container card">
-        <h2>Mesa de regalos</h2>
-        <p>
-          Si no tuviste tiempo de comprar algo o prefieres regalar otra cosa, te
-          comparto algunas ideas:
-        </p>
-        <ul class="gifts">
-          <li>Tarjeta de regalo (tienda X)</li>
-          <li>Aparatos electrónicos: audífonos, powerbank</li>
-          <li>Accesorios: bolso, joyería (collar, aretes)</li>
-          <li>Experiencias: tarjeta para restaurante, spa</li>
-        </ul>
-      </section>
-
-      <section id="galeria" class="container card">
-        <h2>Galería</h2>
-        <div class="gallery-grid">
-          <!-- COLOCA TUS IMÁGENES AQUÍ: img/ ... img//gal6.jpg -->
-          <img class="gallery-item" src="img/gal1.jpg" alt="Galería 1" />
-          <img class="gallery-item" src="img/gal2.jpg" alt="Galería 2" />
-          <img class="gallery-item" src="img/gal3.jpg" alt="Galería 3" />
-          <img class="gallery-item" src="img/gal4.jpg" alt="Galería 4" />
-          <!-- <img class="gallery-item" src="img//gal5.jpg" alt="Galería 5" />
-          <img class="gallery-item" src="img//gal6.jpg" alt="Galería 6" /> -->
-        </div>
-      </section>
-
-      <section id="mapa" class="container card">
-        <h2>Dónde será</h2>
-        <div class="map-embed">
-          <!-- IMBED_MAP_PLACEHOLDER -->
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.123456789!2d-99.13320868468537!3d19.43260798688953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff123456789%3A0xabcdef1234567890!2sEjemplo%20Lugar!5e0!3m2!1ses-419!2smx!4v1600000000000!5m2!1ses-419!2smx"
-            width="100%"
-            height="360"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-          ></iframe>
-        </div>
-      </section>
-
-      <section id="rsvp" class="container card center">
-        <h2>Confirmación del evento</h2>
-        <form id="rsvpForm" class="rsvp-form">
-          <input
-            type="text"
-            name="nombre"
-            placeholder="Nombre completo"
-            required
-          />
-          <input type="email" name="email" placeholder="Correo" required />
-          <select name="asistira">
-            <option value="si">Sí, asistiré</option>
-            <option value="no">No podré asistir</option>
-          </select>
-          <textarea name="mensaje" placeholder="Mensaje (opcional)"></textarea>
-          <button class="btn" type="submit">Enviar</button>
-        </form>
-        <p id="rsvpMsg" class="info"></p>
-      </section>
-
-      <section class="container card center">
-        <h2>Te espero</h2>
-        <p class="final-msg">
-          Al final te espero con mucho anhelo y emoción, no faltes por favor. ♥
-        </p>
-      </section>
-
-      <footer class="site-footer center">
-        <p>© 2025 Regina</p>
-      </footer>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
+  <!--
+    INSTRUCCIONES:
+    - Crea una carpeta "images" junto al archivo y coloca tus imágenes con los nombres usados (photo1.jpg, photo2.jpg, flower_tl.png, CORONA+XV.png, salon.jpg, maps_icon.png, sponsor.png, envelope.png, bill.png, baul.png, closet.png, photo5.jpg.. etc)
+    - Reemplaza ORGANIZER_WA en la parte de JS con tu número (52 + lada + número) para que los mensajes abran hacia tu WhatsApp.
+    - Actualmente los registros se guardan en localStorage como placeholder. Para guardarlos en base de datos real, integra Firebase o tu endpoint y reemplaza el bloque de guardado.
+    - Si quieres que el envío de WhatsApp sea automático desde un servidor, necesitas un backend que use la API de WhatsApp Business.
+    - Si quieres que lo convierta a plantilla React/Tailwind o te arme el ZIP con las imágenes dentro, dime y lo preparo.
+  -->
+</body>
 </html>
