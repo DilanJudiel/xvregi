@@ -55,14 +55,11 @@ header {
   margin: 0 auto;
 }
 .photo-wrap img.main-photo {
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: auto;
   object-fit: cover;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  animation: slow-zoom 20s linear infinite;
+  animation: zoomIn 30s ease-in-out infinite alternate;
+  border-radius: 12px;
 }
 .photo-corners {
   position: absolute;
@@ -136,7 +133,7 @@ p.lead {
 .crown {
   display: block;
   margin: 12px auto;
-  width: 84px;
+  width: 300px;
   height: auto;
 }
 .muted {
@@ -226,7 +223,7 @@ p.lead {
   align-items: center;
 }
 .sponsor {
-  max-width: 160px;
+  max-width: 300px;
   margin-top: 8px;
 }
 
