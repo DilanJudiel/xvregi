@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ========== CONFIG ========== */
   const EVENT_DATE = new Date("2026-01-24T20:00:00"); // fecha/hora del evento
-  const ORGANIZER_WA = "521XXXXXXXXXX"; // reemplaza por tu número (52+lada+número)
+  const ORGANIZER_WA = "5212203717321"; // reemplaza por tu número (52+lada+número)
 
   /* ========== RENDER CALENDAR (ENERO 2026) ========== */
   function renderCalendar() {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.2 }
   );
 
   document.querySelectorAll(".photo-wrap").forEach((el) => io.observe(el));
@@ -109,7 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const folio = "REG-" + Date.now().toString(36).slice(-6).toUpperCase();
-      const data = { nombre, telefono, email, mensaje, rsvp, folio, date: new Date().toISOString() };
+      const data = {
+        nombre,
+        telefono,
+        email,
+        mensaje,
+        rsvp,
+        folio,
+        date: new Date().toISOString(),
+      };
 
       // guardado local (placeholder)
       const stored = JSON.parse(localStorage.getItem("invitados") || "[]");
@@ -117,15 +125,21 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("invitados", JSON.stringify(stored));
 
       // mensaje y envío a WhatsApp del organizador
-      let textOrg = `Confirmación: ${rsvp === "si" ? "ASISTIRÁ" : "NO ASISTIRÁ"}\nNombre: ${nombre}\nTel: ${telefono}\nEmail: ${email}\nFolio: ${folio}`;
-      window.open(`https://wa.me/${ORGANIZER_WA}?text=${encodeURIComponent(textOrg)}`, "_blank");
+      let textOrg = `Confirmación: ${
+        rsvp === "si" ? "ASISTIRÁ" : "NO ASISTIRÁ"
+      }\nNombre: ${nombre}\nTel: ${telefono}\nEmail: ${email}\nFolio: ${folio}`;
+      window.open(
+        `https://wa.me/${ORGANIZER_WA}?text=${encodeURIComponent(textOrg)}`,
+        "_blank"
+      );
 
       // mensaje en la UI
       const formMsg = document.getElementById("formMsg");
       if (formMsg) {
-        formMsg.innerText = rsvp === "si"
-          ? `Gracias ${nombre}. Se generó el folio: ${folio}.`
-          : `Gracias ${nombre} por tu confirmación.`;
+        formMsg.innerText =
+          rsvp === "si"
+            ? `Gracias ${nombre}. Se generó el folio: ${folio}.`
+            : `Gracias ${nombre} por tu confirmación.`;
       }
 
       form.reset();
@@ -137,3 +151,28 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
+// Animación de flores al cargar la página
+const circleFlowers = document.querySelectorAll(".circle-container .flower");
+circleFlowers.forEach((flower, i) => {
+  setTimeout(() => {
+    flower.style.opacity = 1;
+  }, i * 500); // cada flor aparece con 0.5s de retraso
+});
+
+const music = document.getElementById("bgMusic");
+const toggle = document.getElementById("toggleMusic");
+let musicIsOn = true;
+
+toggle.addEventListener("click", () => {
+  if (musicIsOn) {
+    music.pause();
+    toggle.textContent = "🔇";
+    musicIsOn = false;
+  } else {
+    music.play();
+    toggle.textContent = "🎵";
+    musicIsOn = true;
+  }
+});
+

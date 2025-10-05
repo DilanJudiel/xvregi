@@ -1,328 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Invitación - Regina (XV)</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Música de fondo YouTube (cambia TU_VIDEO_ID por el ID real del video) -->
-    <iframe
-      width="0"
-      height="0"
-      src="https://www.youtube.com/embed/TU_VIDEO_ID?autoplay=1&loop=1&playlist=TU_VIDEO_ID"
-      frameborder="0"
-      allow="autoplay"
-    >
-    </iframe>
 
-    <div class="container">
-      <!-- ====== HERO / Portada ====== -->
-      <div class="card hero">
-        <div class="section center">
-          <div class="photo-wrap">
-            <img class="main-photo" src="images/photo1.jpg" alt="Regina" />
-            <div class="photo-corners">
-              <img class="flower top-left" src="images/flower_tl.png" alt="" />
-              <img
-                class="flower bottom-right"
-                src="images/flower_br.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <h1 class="main-title">MIS XV</h1>
-          <h2 class="name">Regina</h2>
-          <p class="lead">
-            "Hoy empieza una nueva aventura llena de emociones y sueños"
-          </p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Invitación - Regina (XV)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- ====== HERO / Portada ====== -->
+    <div class="card hero">
+      <div class="section center">
+        <div class="circle-container photo-wrap">
+          <img class="main-photo" src="images/photo1.jpg" alt="Regina" />
+        </div>
+        <h1 class="main-title">MIS XV</h1>
+        <h1 class="name">Regina</h1>
+        <p class="lead">
+          "Hoy empieza una nueva aventura llena de emociones y sueños"
+        </p>
+      </div>
+    </div>
+
+    <!-- ====== Foto + corona ====== -->
+    <div class="card section center">
+      <div class="photo-wrap">
+        <img class="main-photo" src="images/photo2.jpg" alt="Regina otra" />
+        <div class="photo-corners">
+          <img class="flower top-left" src="images/flower_tl.png" alt="" />
+          <img class="flower bottom-right" src="images/flower_br.png" alt="" />
         </div>
       </div>
+      <img class="crown" src="images/CORONA+XV.png" alt="Corona" style="width: 50%" />
+      <p class="muted">
+        Con la bendición de Dios y el amor de mis padres, me siento feliz de
+        llegar a este momento de mi vida, el día que dejaré atrás mi infancia
+        y comenzaré un nuevo viaje.
+      </p>
+    </div>
 
-      <!-- ====== Foto + corona ====== -->
-      <div class="card section center">
+    <!-- ====== Padres & Padrinos ====== -->
+    <div class="card section center">
+      <img class="crown" src="images/CORONA+XV.png" alt="Corona" style="width: 50%" />
+      <p style="font-family: var(--font-cursive); font-size: 40px; margin: 6px 0;">Mis Padres</p>
+      <p class="muted">Ángel Martínez Paniagua &amp; Mildred Fernández Gómez</p>
+      <img class="crown" src="images/CORONA+XV.png" alt="Corona" style="width: 50%" />
+      <p style="font-family: var(--font-cursive); font-size: 40px; margin: 6px 0;">Mis Padrinos</p>
+      <p class="muted">Juan Raymundo Quintero &amp; Angela Martínez Paniagua</p>
+    </div>
+
+    <!-- ====== Calendario ====== -->
+    <div class="card section center">
+      <h1 style="font-family: var(--font-cursive)">Fecha del Evento</h1>
+      <div class="calendar" id="calendar"></div>
+      <div class="countdown" id="countdown"></div>
+      <p class="muted">Sábado 24 de enero de 2026</p>
+    </div>
+
+    <!-- ====== Salón ====== -->  
+    <div class="card section center">
+      <div class="times">
+        <div><span class="title">Hotel Marquis Reforma</span></div>
         <div class="photo-wrap">
-          <img class="main-photo" src="images/photo2.jpg" alt="Regina otra" />
-          <div class="photo-corners">
-            <img class="flower top-left" src="images/flower_tl.png" alt="" />
-            <img
-              class="flower bottom-right"
-              src="images/flower_br.png"
-              alt=""
-            />
-          </div>
-        </div>
-        <img
-          class="crown"
-          src="images/CORONA+XV.png"
-          alt="Corona"
-          style="width: 50%"
-        />
-        <p class="muted">
-          Con la bendición de Dios y el amor de mis padres, me siento feliz de
-          llegar a este momento de mi vida, el día que dejaré atrás mi infancia
-          y comenzaré un nuevo viaje.
-        </p>
-      </div>
-
-      <!-- ====== Padres ====== -->
-      <div class="card section center">
-        <div class="photo-wrap">
-          <img class="main-photo" src="images/photo2.jpg" alt="Padres" />
-          <div class="photo-corners">
-            <img class="flower top-left" src="images/flower_tl.png" alt="" />
-          </div>
-        </div>
-        <img
-          class="crown"
-          src="images/CORONA+XV.png"
-          alt="Corona"
-          style="width: 50%"
-        />
-        <p
-          style="
-            font-family: var(--font-cursive);
-            font-size: 30px;
-            margin: 6px 0;
-          "
-        >
-          Mis Padres
-        </p>
-        <p class="muted">
-          Ángel Martínez Paniagua &amp; Mildred Fernández Gómez
-        </p>
-      </div>
-
-      <!-- ====== Padrinos ====== -->
-      <div class="card section center">
-        <div class="photo-wrap">
-          <img class="main-photo" src="images/photo2.jpg" alt="Padrinos" />
-          <div class="photo-corners">
-            <img class="flower top-left" src="images/flower_tl.png" alt="" />
-          </div>
-        </div>
-        <img
-          class="crown"
-          src="images/CORONA+XV.png"
-          alt="Corona"
-          style="width: 50%"
-        />
-        <p
-          style="
-            font-family: var(--font-cursive);
-            font-size: 30px;
-            margin: 6px 0;
-          "
-        >
-          Mis padrinos
-        </p>
-        <p class="muted">
-          Juan Raymundo Quintero &amp; Angela Martínez Paniagua
-        </p>
-      </div>
-
-      <!-- ====== Calendario ====== -->
-      <div class="card section center">
-        <h3 style="font-family: var(--font-cursive)">Fecha del Evento</h3>
-        <div class="calendar" id="calendar"></div>
-        <div class="countdown" id="countdown"></div>
-        <p class="muted">Sábado 24 de enero de 2026</p>
-      </div>
-
-      <!-- ====== Salón ====== -->
-      <div class="card section">
-        <h3 class="center" style="font-family: var(--font-cursive)">Salón</h3>
-        <div class="photo-wrap">
-          <img class="main-photo" src="images/salon.jpg" alt="Salón" />
+          <img class="main-photo" src="images/Hotel.jpg" alt="Salón" />
         </div>
         <div class="addr">
           <img src="images/maps_icon.png" alt="maps" width="36" />
-          <a id="mapsLink" href="#" target="_blank"
-            >Avenida Paseo de la Reforma 465, Cuauhtémoc, CDMX</a
-          >
+          <a id="mapsLink" href="#" target="_blank">
+            Avenida Paseo de la Reforma 465, Cuauhtémoc, CDMX
+          </a>
         </div>
       </div>
-
-      <!-- ====== Horarios ====== -->
-      <div class="card section center">
-        <div class="times">
-          <div>
-            <span class="title">Recepción</span>
-            <div class="muted">18:00 hrs</div>
-          </div>
-          <div>
-            <span class="title">Ceremonia de Acción de Gracias</span>
-            <div class="muted">17:00 hrs</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ====== Mesa de regalos ====== -->
-      <div class="card section center">
-        <p style="font-family: var(--font-cursive); font-size: 22px">
-          Mesa de regalos
-        </p>
-        <p class="muted">
-          Agradezco mucho todo su amor y apoyo al iniciar esta nueva etapa en mi
-          vida.
-        </p>
-        <img class="sponsor" src="images/sponsor.png" alt="Patrocinador" />
-      </div>
-
-      <!-- ====== Lluvia de sobres ====== -->
-      <div class="card section center">
-        <img class="crown" src="images/envelope.png" alt="Sobre grande" />
-        <p
-          style="
-            font-family: var(--font-cursive);
-            font-size: 18px;
-            margin: 8px 0;
-          "
-        >
-          Si no tienes tiempo o no sabes qué regalarme...
-        </p>
-        <p style="font-family: var(--font-cursive); font-size: 20px">
-          Lluvia de sobres
-        </p>
-        <div
-          style="
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            justify-content: center;
-            margin: 8px 0;
-          "
-        >
-          <img
-            src="images/envelopebillbaul.png"
-            style="margin-top: 8px; width: 90%"
-            alt=""
-          />
-        </div>
-        <p class="muted">
-          La lluvia de sobres, es la tradición de regalar dinero en efectivo a
-          la quinceañera en un sobre el día del evento.
-        </p>
-      </div>
-
-      <!-- ====== Código vestimenta ====== -->
-      <div class="card section center">
-        <p style="font-family: var(--font-cursive); font-size: 20px">
-          Código de vestimenta
-        </p>
-        <p class="muted">Etiqueta</p>
-      </div>
-
-      <!-- ====== Reseña del hotel ====== -->
-      <div class="card section">
-        <p style="font-family: var(--font-cursive); font-size: 20px">
-          Breve reseña del hotel
-        </p>
-        <p class="muted">
-          La Historia del Hotel Marquis Reforma: Un Ícono de la Hospitalidad
-          Mexicana<br /><br />
-          Ubicado en el corazón del Paseo de la Reforma, Hotel Marquis Reforma
-          abrió sus puertas en 1991, consolidándose como uno de los hoteles más
-          exclusivos y prestigiosos de la Ciudad de México. Como un hotel de
-          lujo 5 estrellas, ha sido reconocido por su excelencia en
-          hospitalidad, su diseño Art Déco y su compromiso con la
-          sustentabilidad.<br /><br />
-          El Hotel Marquis Reforma es un hotel 100% Mexicano, es un hotel de 5
-          estrellas y cuenta con la distinción 4 Diamantes otorgada por la AAA
-          (American Automobile Association).
-        </p>
-      </div>
-
-      <!-- ====== Confirmar asistencia ====== -->
-      <div class="card section">
-        <p
-          style="
-            font-family: var(--font-cursive);
-            font-size: 20px;
-            text-align: center;
-          "
-        >
-          Confirmar asistencia
-        </p>
-        <form class="rsvp" id="rsvpForm">
-          <input
-            type="text"
-            id="nombre"
-            placeholder="Nombre completo *"
-            required
-          />
-          <input type="tel" id="telefono" placeholder="Teléfono *" required />
-          <input type="email" id="email" placeholder="Correo" />
-          <textarea
-            id="mensaje"
-            placeholder="Mensaje de felicitación"
-            rows="3"
-          ></textarea>
-          <label>RSVP *</label>
-          <select id="rsvp" required>
-            <option value="">Selecciona...</option>
-            <option value="si">¡Sí asistiré!</option>
-            <option value="no">Lo lamento, no podré asistir</option>
-          </select>
-          <label
-            >*No puedes confirmar más personas de las indicadas en tu pase de
-            entrada</label
-          >
-          <div class="row">
-            <input
-              class="small"
-              type="number"
-              id="acompanantes"
-              min="0"
-              max="5"
-              placeholder="No. personas (0-5)"
-            />
-            <input
-              type="text"
-              id="pase"
-              placeholder="Código de pase (si aplica)"
-            />
-          </div>
-          <div style="text-align: center">
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
-        <p
-          id="formMsg"
-          style="text-align: center; margin-top: 10px; color: var(--azul)"
-        ></p>
-      </div>
-
-      <!-- ====== Fotos grid ====== -->
-      <div class="card section">
-        <div class="photos-grid">
-          <img src="images/photo5.jpg" alt="" />
-          <img src="images/photo6.jpg" alt="" />
-          <img src="images/photo7.jpg" alt="" />
-          <img src="images/photo8.jpg" alt="" />
-        </div>
-        <p style="text-align: center; margin-top: 12px">
-          Te espero con mucho anhelo y emoción....
-        </p>
-        <p
-          style="
-            font-family: var(--font-cursive);
-            font-size: 20px;
-            text-align: center;
-          "
-        >
-          NO FALTES
-        </p>
-      </div>
-
-      <footer>
-        <p style="color: var(--azul); font-weight: 700">
-          Colores reservados: Azul y Dorado
-        </p>
-      </footer>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- ====== Horarios ====== -->
+    <div class="card section center">
+      <div class="times">
+        <div>
+          <span class="title">Recepción</span>
+          <div class="muted">18:30 hrs</div>
+        </div>
+        <div>
+          <span class="title">Ceremonia de Acción de Gracias</span>
+          <div class="muted">17:00 hrs</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== Mesa de regalos ====== -->
+    <div class="card section center">
+      <p style="font-family: var(--font-cursive); font-size: 30px">Mesa de regalos</p>
+      <p class="muted">
+        Agradezco mucho todo su amor y apoyo al iniciar esta nueva etapa en mi vida.
+      </p>
+      <img class="sponsor" src="images/sponsor.png" alt="Patrocinador" />
+    </div>
+
+    <!-- ====== Lluvia de sobres ====== -->
+    <div class="card section center">
+      <img class="crown" src="images/envelope.png" alt="Sobre grande" />
+      <p style="font-family: var(--font-cursive); font-size: 25px; margin: 8px 0;">
+        Si no tienes tiempo o no sabes qué regalarme...
+      </p>
+      <p style="font-family: var(--font-cursive); font-size: 30px;">Lluvia de sobres</p>
+      <div style="display: flex; gap: 8px; align-items: center; justify-content: center; margin: 8px 0;">
+        <img src="images/envelopebillbaul.png" style="margin-top: 8px; width: 90%" alt="" />
+      </div>
+      <p class="muted">
+        La lluvia de sobres, es la tradición de regalar dinero en efectivo a
+        la quinceañera en un sobre el día del evento.
+      </p>
+    </div>
+
+    <!-- ====== Código vestimenta ====== -->
+    <div class="card section center">
+      <p style="font-family: var(--font-cursive); font-size: 30px">Código de vestimenta</p>
+      <p class="muted">Etiqueta</p>
+    </div>
+
+    <!-- ====== Reseña del hotel ====== -->
+    <div class="card section">
+      <div class="photo-wrap">
+        <img class="main-photo" src="images/salon.jpg" alt="Salón" />
+      </div>
+      <p style="font-family: var(--font-cursive); font-size: 30px">Breve reseña del hotel</p>
+      <p class="muted">
+        La Historia del Hotel Marquis Reforma: Un Ícono de la Hospitalidad
+        Mexicana<br /><br />
+        Ubicado en el corazón del Paseo de la Reforma, Hotel Marquis Reforma
+        abrió sus puertas en 1991, consolidándose como uno de los hoteles más
+        exclusivos y prestigiosos de la Ciudad de México. Como un hotel de
+        lujo 5 estrellas, ha sido reconocido por su excelencia en
+        hospitalidad, su diseño Art Déco y su compromiso con la
+        sustentabilidad.<br /><br />
+        El Hotel Marquis Reforma es un hotel 100% Mexicano, es un hotel de 5
+        estrellas y cuenta con la distinción 4 Diamantes otorgada por la AAA
+        (American Automobile Association).
+      </p>
+    </div>
+
+    <!-- ====== Confirmar asistencia ====== -->
+    <div class="card section">
+      <p style="font-family: var(--font-cursive); font-size: 30px; text-align: center;">Confirmar asistencia</p>
+      <form class="rsvp" id="rsvpForm">
+        <input type="text" id="nombre" placeholder="Nombre completo *" required />
+        <input type="tel" id="telefono" placeholder="Teléfono *" required />
+        <input type="email" id="email" placeholder="Correo" />
+        <textarea id="mensaje" placeholder="Mensaje de felicitación" rows="3"></textarea>
+        <label>RSVP *</label>
+        <select id="rsvp" required>
+          <option value="">Selecciona...</option>
+          <option value="si">¡Sí asistiré!</option>
+          <option value="no">Lo lamento, no podré asistir</option>
+        </select>
+        <div style="text-align: center">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+      <p id="formMsg" style="text-align: center; margin-top: 10px; color: var(--azul)"></p>
+    </div>
+
+    <!-- ====== Fotos grid ====== -->
+    <div class="card section">
+      <div class="photos-grid">
+        <img src="images/photo5.jpg" alt="" />
+        <img src="images/photo6.jpg" alt="" />
+        <img src="images/photo7.jpg" alt="" />
+        <img src="images/photo8.jpg" alt="" />
+      </div>
+      <p style="text-align: center; margin-top: 12px">Te espero con mucho anhelo y emoción....</p>
+      <p style="font-family: var(--font-cursive); font-size: 20px; text-align: center;">NO FALTES</p>
+    </div>
+
+    <footer>
+      <p style="color: var(--azul); font-weight: 700">Colores reservados: Azul y Dorado</p>
+    </footer>
+  </div>
+
+  <!-- Música de fondo YouTube con API -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="audio/Alanis Morissette - Ironic (Lyrics).mp4" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <button id="toggleMusic">🎵</button>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
