@@ -160,19 +160,44 @@ circleFlowers.forEach((flower, i) => {
   }, i * 500); // cada flor aparece con 0.5s de retraso
 });
 
+//Musica de fondo con botón de control
 const music = document.getElementById("bgMusic");
-const toggle = document.getElementById("toggleMusic");
-let musicIsOn = true;
+    const toggle = document.getElementById("toggleMusic");
+    let musicIsOn = false;
 
-toggle.addEventListener("click", () => {
-  if (musicIsOn) {
-    music.pause();
-    toggle.textContent = "🔇";
-    musicIsOn = false;
-  } else {
-    music.play();
-    toggle.textContent = "🎵";
-    musicIsOn = true;
-  }
-});
+    // Reanudar música automáticamente si el usuario ya la activó antes
+    if (localStorage.getItem("music") === "on") {
+      playMusic();
+    }
 
+    toggle.addEventListener("click", () => {
+      if (musicIsOn) {
+        pauseMusic();
+      } else {
+        playMusic();
+      }
+    });
+
+    function playMusic() {
+      music.play().then(() => {
+        musicIsOn = true;
+        toggle.textContent = "🎵";
+        localStorage.setItem("music", "on");
+      }).catch(err => {
+        console.log("El navegador bloqueó el autoplay hasta que el usuario interactúe.");
+      });
+    }
+
+    function pauseMusic() {
+      music.pause();
+      musicIsOn = false;
+      toggle.textContent = "🔇";
+      localStorage.setItem("music", "off");
+    }
+
+    // Intento de reproducir apenas el usuario haga cualquier interacción
+    document.addEventListener("click", () => {
+      if (!musicIsOn && localStorage.getItem("music") === "on") {
+        playMusic();
+      }
+    });
