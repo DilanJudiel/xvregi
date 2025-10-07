@@ -297,6 +297,3 @@ form.rsvp button:hover {
 .flowers img.flower:nth-child(3) { bottom: -20px; left: -20px; transform: translate(0,0); }
 .flowers img.flower:nth-child(4) { bottom: -20px; right: -20px; transform: translate(0,0); }
 
-/*Regalo*/
-.contenedor:hover .imagen {-webkit-transform:scale(1.3);transform:scale(1.3);}
-.contenedor {overflow:hidden;}
