@@ -88,7 +88,10 @@ body {
 .card .envelope-icon {
   width: 140px;
   margin: 12px auto;
-  display: block;
+  display: inline-block;
+}
+.animate__animated {
+  animation-iteration-count: infinite !important;
 }
 
 /* Mantener íconos pequeños de ecuación */
