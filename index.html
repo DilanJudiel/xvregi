@@ -96,7 +96,8 @@
     <!-- ====== Mesa de regalos ====== -->
     <div class="card section center">
       <p style="font-family: var(--font-cursive); font-size: 30px">Mesa de regalos</p>
-      <img class="animate__animated animate__pulse animate__repeat-infinite sponsor" src="images/ICONO+MESA+DE+REGALOS.webp" alt="">
+      <img class="animate__animated animate__pulse animate__repeat-infinite sponsor"
+        src="images/ICONO+MESA+DE+REGALOS.webp" alt="">
       <p class="muted">
         “Gracias por tu amabilidad y por compartir este día inolvidable conmigo”.
       </p>
@@ -130,7 +131,7 @@
         <img class="main-photo" src="images/closet.png" alt="Closet" />
       </div>
       <p class="muted">Etiqueta</p>
-<p class="muted">Colores reservados: Azul, Dorado y Rojo</p>
+      <p class="muted">Colores reservados: Azul, Dorado y Rojo</p>
     </div>
 
     <!-- ====== Reseña del hotel ====== -->
@@ -177,19 +178,28 @@
 
     <!-- ====== Fotos grid ====== -->
     <div class="card section">
+      <p style="font-family: var(--font-cursive); font-size: 20px; text-align: center;">Galería</p>
       <div class="photos-grid">
-        <img src="images/photo5.jpg" alt="" />
-        <img src="images/photo6.jpg" alt="" />
-        <img src="images/photo7.jpg" alt="" />
-        <img src="images/photo8.jpg" alt="" />
+        <img src="images/photo5.jpg" alt="" class="gallery-item" />
+        <img src="images/photo6.jpg" alt="" class="gallery-item" />
+        <img src="images/photo7.jpg" alt="" class="gallery-item" />
+        <img src="images/photo8.jpg" alt="" class="gallery-item" />
       </div>
-      <p style="text-align: center; margin-top: 12px">¡Festejo mis XV años con los que más amo!
-        Te espero con gran alegría, ¡será top!</p>
+      <p style="text-align: center; margin-top: 12px">¡Festejo mis XV años con los que más amo! Te espero con gran
+        alegría, ¡será top!</p>
       <p style="font-family: var(--font-cursive); font-size: 20px; text-align: center;">NO FALTES</p>
     </div>
 
+    <!-- Lightbox / Carrusel -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-img" src="" alt="Galería" />
+      <a class="prev">&#10094;</a>
+      <a class="next">&#10095;</a>
+    </div>
+    
     <footer>
-      <p style="color: var(--azul); font-weight: 700">Colores reservados: Azul, Dorado y Rojo</p>
+      <!-- <p style="color: var(--azul); font-weight: 700">Colores reservados: Azul, Dorado y Rojo</p> -->
     </footer>
   </div>
 
@@ -197,7 +207,7 @@
   <div class="music-bg">
     <button id="toggleMusic" class="music-btn">🎵</button>
   </div>
-    <audio id="bgMusic" loop>
+  <audio id="bgMusic" loop>
     <source src="audio/Ironic.mp3" type="audio/mpeg">
   </audio>
 

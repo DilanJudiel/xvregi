@@ -125,9 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("invitados", JSON.stringify(stored));
 
       // mensaje y envío a WhatsApp del organizador
-      let textOrg = `Confirmación: ${
-        rsvp === "si" ? "ASISTIRÁ" : "NO ASISTIRÁ"
-      }\nNombre: ${nombre}\nTel: ${telefono}\nEmail: ${email}\nFolio: ${folio}`;
+      let textOrg = `Confirmación: ${rsvp === "si" ? "ASISTIRÁ" : "NO ASISTIRÁ"
+        }\nNombre: ${nombre}\nTel: ${telefono}\nEmail: ${email}\nFolio: ${folio}`;
       window.open(
         `https://wa.me/${ORGANIZER_WA}?text=${encodeURIComponent(textOrg)}`,
         "_blank"
@@ -162,42 +161,103 @@ circleFlowers.forEach((flower, i) => {
 
 //Musica de fondo con botón de control
 const music = document.getElementById("bgMusic");
-    const toggle = document.getElementById("toggleMusic");
-    let musicIsOn = false;
+const toggle = document.getElementById("toggleMusic");
+let musicIsOn = false;
 
-    // Reanudar música automáticamente si el usuario ya la activó antes
-    if (localStorage.getItem("music") === "on") {
-      playMusic();
-    }
+// Reanudar música automáticamente si el usuario ya la activó antes
+if (localStorage.getItem("music") === "on") {
+  playMusic();
+}
 
-    toggle.addEventListener("click", () => {
-      if (musicIsOn) {
-        pauseMusic();
-      } else {
-        playMusic();
-      }
-    });
+toggle.addEventListener("click", () => {
+  if (musicIsOn) {
+    pauseMusic();
+  } else {
+    playMusic();
+  }
+});
 
-    function playMusic() {
-      music.play().then(() => {
-        musicIsOn = true;
-        toggle.textContent = "🎵";
-        localStorage.setItem("music", "on");
-      }).catch(err => {
-        console.log("El navegador bloqueó el autoplay hasta que el usuario interactúe.");
-      });
-    }
+function playMusic() {
+  music.play().then(() => {
+    musicIsOn = true;
+    toggle.textContent = "🎵";
+    localStorage.setItem("music", "on");
+  }).catch(err => {
+    console.log("El navegador bloqueó el autoplay hasta que el usuario interactúe.");
+  });
+}
 
-    function pauseMusic() {
-      music.pause();
-      musicIsOn = false;
-      toggle.textContent = "🔇";
-      localStorage.setItem("music", "off");
-    }
+function pauseMusic() {
+  music.pause();
+  musicIsOn = false;
+  toggle.textContent = "🔇";
+  localStorage.setItem("music", "off");
+}
 
-    // Intento de reproducir apenas el usuario haga cualquier interacción
-    document.addEventListener("click", () => {
-      if (!musicIsOn && localStorage.getItem("music") === "on") {
-        playMusic();
-      }
-    });
+// Intento de reproducir apenas el usuario haga cualquier interacción
+document.addEventListener("click", () => {
+  if (!musicIsOn && localStorage.getItem("music") === "on") {
+    playMusic();
+  }
+});
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const closeBtn = document.querySelector('.close');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let currentIndex = 0;
+
+// Abrir lightbox al hacer clic en una imagen visible
+galleryItems.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    // Abrir lightbox
+    lightbox.style.display = 'block';
+
+    // Si la imagen clickeada está en las primeras 4, usamos su índice para empezar
+    currentIndex = index;
+    lightboxImg.src = galleryImages[currentIndex];
+  });
+});
+
+// Cerrar lightbox
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+// Navegar
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentIndex];
+});
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentIndex];
+});
+
+// Cerrar haciendo click fuera de la imagen
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) lightbox.style.display = 'none';
+});
+
+// Lista de imágenes para el carrusel (muchas fotos)
+const galleryImages = [
+  "images/photo5.jpg",
+  "images/photo6.jpg",
+  "images/photo7.jpg",
+  "images/photo8.jpg",
+  "images/photo9.jpg",
+  "images/photo10.jpg",
+  "images/photo11.jpg",
+  "images/photo12.jpg",
+  "images/photo13.jpg",
+  "images/photo14.jpg",
+  "images/photo15.jpg",
+  "images/photo16.jpg",
+  "images/photo17.jpg",
+  "images/photo18.jpg",
+  "images/photo19.jpg"
+];
