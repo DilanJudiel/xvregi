@@ -261,7 +261,7 @@ function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     currentIndex = (currentIndex + 1) % galleryImages.length;
     showImage(currentIndex);
-  }, 1000); // cambia cada 1 segundo (puedes ajustar el tiempo)
+  }, 2500); // cambia cada 2.5 segundos (puedes ajustar el tiempo)
 }
 
 // === Detener el carrusel automático ===
