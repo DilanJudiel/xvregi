@@ -244,8 +244,7 @@ const galleryImages = [
   "images/9238.jpg",
   "images/9239.jpg",
   "images/9240.jpg",
-  "images/9241.jpg",
-  "images/9242.jpg"
+  "images/9241.jpg"
 ];
 
 let currentIndex = 0;
