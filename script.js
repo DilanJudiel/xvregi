@@ -201,6 +201,7 @@ document.addEventListener("click", () => {
   }
 });
 
+// ====== CARRUSEL AUTOMÁTICO GALERÍA ======
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.querySelector('.lightbox-img');
 const galleryItems = document.querySelectorAll('.gallery-item');
@@ -208,42 +209,7 @@ const closeBtn = document.querySelector('.close');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 
-let currentIndex = 0;
-
-// Abrir lightbox al hacer clic en una imagen visible
-galleryItems.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    // Abrir lightbox
-    lightbox.style.display = 'block';
-
-    // Si la imagen clickeada está en las primeras 4, usamos su índice para empezar
-    currentIndex = index;
-    lightboxImg.src = galleryImages[currentIndex];
-  });
-});
-
-// Cerrar lightbox
-closeBtn.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-});
-
-// Navegar
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentIndex];
-});
-
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentIndex];
-});
-
-// Cerrar haciendo click fuera de la imagen
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) lightbox.style.display = 'none';
-});
-
-// Lista de imágenes para el carrusel (muchas fotos)
+// Lista de imágenes para el carrusel (puedes agregar todas las que quieras)
 const galleryImages = [
   "images/photo5.jpg",
   "images/photo6.jpg",
@@ -253,11 +219,82 @@ const galleryImages = [
   "images/photo10.jpg",
   "images/photo11.jpg",
   "images/photo12.jpg",
-  "images/photo13.jpg",
-  "images/photo14.jpg",
-  "images/photo15.jpg",
-  "images/photo16.jpg",
-  "images/photo17.jpg",
-  "images/photo18.jpg",
-  "images/photo19.jpg"
+  "images/photo5.jpg",
+  "images/photo6.jpg",
+  "images/photo7.jpg",
+  "images/photo8.jpg",
+  "images/photo9.jpg",
+  "images/photo10.jpg",
+  "images/photo11.jpg",
+  "images/photo12.jpg",
+  "images/photo5.jpg",
+  "images/photo6.jpg",
+  "images/photo7.jpg",
+  "images/photo8.jpg",
+  "images/photo9.jpg",
+  "images/photo10.jpg",
+  "images/photo11.jpg",
+  "images/photo12.jpg"
 ];
+
+let currentIndex = 0;
+let autoSlideInterval = null; // variable para controlar el temporizador
+
+// === Función para mostrar imagen actual ===
+function showImage(index) {
+  lightboxImg.src = galleryImages[index];
+}
+
+// === Función para iniciar el carrusel automático ===
+function startAutoSlide() {
+  stopAutoSlide(); // por si ya está corriendo
+  autoSlideInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    showImage(currentIndex);
+  }, 3000); // cambia cada 3 segundos (puedes ajustar el tiempo)
+}
+
+// === Detener el carrusel automático ===
+function stopAutoSlide() {
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = null;
+  }
+}
+
+// === Abrir el carrusel desde las imágenes visibles ===
+galleryItems.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'block';
+    currentIndex = index;
+    showImage(currentIndex);
+    startAutoSlide(); // inicia el movimiento automático al abrir
+  });
+});
+
+// === Cerrar el carrusel ===
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+  stopAutoSlide(); // se detiene al cerrar
+});
+
+// === Navegar manualmente (prev/next) ===
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  showImage(currentIndex);
+  startAutoSlide(); // reinicia el contador
+});
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  showImage(currentIndex);
+  startAutoSlide(); // reinicia el contador
+});
+
+// === Cerrar si se hace click fuera de la imagen ===
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) {
+    lightbox.style.display = 'none';
+    stopAutoSlide();
+  }
+});
