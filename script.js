@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ========== CONFIG ========== */
   const EVENT_DATE = new Date("2026-01-24T20:00:00"); // fecha/hora del evento
-  const ORGANIZER_WA = "5212203717321"; // reemplaza por tu número (52+lada+número)
+  const ORGANIZER_WA = "5217204406514"; // reemplaza por tu número (52+lada+número)
 
   /* ========== RENDER CALENDAR (ENERO 2026) ========== */
   function renderCalendar() {
