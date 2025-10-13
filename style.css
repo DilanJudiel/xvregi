@@ -353,6 +353,7 @@ form.rsvp button:hover {
   align-items: center;
   gap: 15px;
   margin-bottom: 12px;
+  justify-content: center
 }
 
 .itinerario-img {
